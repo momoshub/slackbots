@@ -1,0 +1,39 @@
+name: Queue Rotation
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "5 0 * * 0" # Every Sunday at 0:05 UTC (for rotation)
+jobs:
+  rotate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+      - name: Run tests
+        run: pnpm test
+      - name: Build
+        run: pnpm build
+      - name: Rotate queue
+        run: node --import @swc-node/register/esm-register src/main.ts rotate
+      - name: Commit queue update
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: "Another Kai [Jarvis]"
+          author_email: thien@momos.com
+          committer_name: "[Jarvis]"
+          committer_email: 41898282+github-actions[bot]@users.noreply.github.com
+          fetch: false
+          message: "Queue rotation - update current person"
+          add: "./current --force" 

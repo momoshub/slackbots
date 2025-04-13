@@ -1,0 +1,27 @@
+name: Queue Notification
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 2 * * 1-5" # Every weekday at 2:00 UTC (for notification)
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    env:
+      SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
+      SLACK_TEAM_ID: ${{ secrets.SLACK_TEAM_ID }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build
+        run: pnpm build
+      - name: Send notification
+        run: node --import @swc-node/register/esm-register src/main.ts notify 

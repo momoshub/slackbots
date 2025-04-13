@@ -1,0 +1,32 @@
+{
+  "name": "slack-queue-notifier",
+  "version": "1.0.0",
+  "description": "Slack notification bot for queue rotation",
+  "type": "module",
+  "scripts": {
+    "dev": "node --loader ts-node/esm src/main.ts",
+    "build": "tsc",
+    "test": "vitest --run",
+    "coverage": "vitest run --coverage",
+    "notify": "node --import @swc-node/register/esm-register src/main.ts notify",
+    "rotate": "node --import @swc-node/register/esm-register src/main.ts rotate"
+  },
+  "keywords": [],
+  "author": "Kai",
+  "license": "MIT",
+  "dependencies": {
+    "@slack/web-api": "^7.9.1",
+    "@swc-node/register": "^1.10.10",
+    "dotenv": "^16.5.0",
+    "fs-extra": "^11.3.0",
+    "string-natural-compare": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.11.24",
+    "@types/string-natural-compare": "^3.0.4",
+    "@vitest/coverage-v8": "^1.3.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.3.1"
+  }
+}
