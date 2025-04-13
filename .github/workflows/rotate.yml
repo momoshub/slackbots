@@ -2,7 +2,7 @@ name: Queue Rotation
 on:
   workflow_dispatch:
   schedule:
-    - cron: "5 0 * * 0" # Every Sunday at 0:05 UTC (for rotation)
+    - cron: "5 0 * * 1" # Every Monday at 0:05 UTC (for rotation)
 jobs:
   rotate:
     runs-on: ubuntu-latest

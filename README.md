@@ -51,7 +51,7 @@ pnpm rotate
 The system uses two separate GitHub Actions workflow files:
 
 1. **Rotation Workflow** (rotate.yml)
-   - Runs at 0:05 AM UTC every Sunday
+   - Runs at 0:05 AM UTC every Monday
    - Rotates to the next person in the queue
    - Commits the updated current file
 
