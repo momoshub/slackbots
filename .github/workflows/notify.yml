@@ -2,7 +2,7 @@ name: Queue Notification
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * 1-5" # Every weekday at 7:30 GMT7 (for notification)
+    - cron: "0 0 * * 1" # Runs at 00:00, only on Monday.
 jobs:
   notify:
     runs-on: ubuntu-latest
