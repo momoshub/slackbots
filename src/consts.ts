@@ -7,7 +7,5 @@ You can check the rotation here:
 🔗 Github Queue: https://github.com/momoshub/slackbots/blob/main/queue
 🔗 Github Current: https://github.com/momoshub/slackbots/blob/main/current
 
-FYI <@S08993D1SMB>.
-
 Thanks! 🙏
 `
