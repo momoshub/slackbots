@@ -3,6 +3,7 @@
 [![Tests](https://github.com/momoshub/slackbots/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/momoshub/slackbots/actions/workflows/test.yml)
 [![Queue Rotation](https://github.com/momoshub/slackbots/actions/workflows/rotate.yml/badge.svg?branch=main)](https://github.com/momoshub/slackbots/actions/workflows/rotate.yml)
 [![Queue Notification](https://github.com/momoshub/slackbots/actions/workflows/notify.yml/badge.svg?branch=main)](https://github.com/momoshub/slackbots/actions/workflows/notify.yml)
+
 A simple Slack notification system for queue rotation. This tool sends notifications to people in a queue on a scheduled basis and automatically rotates through the queue.
 
 ## Features
