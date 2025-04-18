@@ -38,6 +38,7 @@ import { fileURLToPath } from 'url'
 
 // Import the main module after mocks are set up
 import { main } from './main'
+import {SLACK_MSG} from './consts'
 
 // Create test helper
 function mockFileSystem(files: Record<string, string>) {
@@ -126,7 +127,7 @@ describe('Slack Notification Bot', () => {
       // Verify
       expect(mockPostMessage).toHaveBeenCalledWith({
         channel: 'mock-channel',
-        text: 'Hi <@U12345>, it is your turn',
+        text: 'Hi <@U12345>,'  + SLACK_MSG,
         mrkdwn: true
       })
     })
@@ -182,7 +183,7 @@ describe('Slack Notification Bot', () => {
       // Verify that it falls back to the first person in queue
       expect(mockPostMessage).toHaveBeenCalledWith({
         channel: 'mock-channel',
-        text: 'Hi <@U12345>, it is your turn',
+        text: 'Hi <@U12345>,'  + SLACK_MSG,
         mrkdwn: true
       })
     })

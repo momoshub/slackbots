@@ -3,6 +3,7 @@ import { WebClient } from '@slack/web-api'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import {SLACK_MSG} from './consts'
 
 // Types
 type Command = 'notify' | 'rotate'
@@ -92,7 +93,7 @@ async function notifyCurrentPerson(): Promise<void> {
     
     const name = currentPerson.split(',')[1].trim()
     const ID = currentPerson.split(',')[0].trim()
-    const msg = ID?  `Hi <@${ID}>, it is your turn` : `Hi ${name}, it is your turn`
+    const msg = ID?  `Hi <@${ID}>,${SLACK_MSG}` : `Hi ${name},${SLACK_MSG}`
     await client.chat.postMessage({
       channel,
       text: msg,
