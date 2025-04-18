@@ -1,5 +1,9 @@
 # Slack Queue Notifier
 
+![Tests](https://github.com/momos/slackbots/actions/workflows/test.yml/badge.svg)
+![Queue Rotation](https://github.com/momos/slackbots/actions/workflows/rotate.yml/badge.svg)
+![Queue Notification](https://github.com/momos/slackbots/actions/workflows/notify.yml/badge.svg)
+
 A simple Slack notification system for queue rotation. This tool sends notifications to people in a queue on a scheduled basis and automatically rotates through the queue.
 
 ## Features
@@ -48,7 +52,7 @@ pnpm rotate
 
 ## GitHub Actions Workflows
 
-The system uses two separate GitHub Actions workflow files:
+The system uses three separate GitHub Actions workflow files:
 
 1. **Rotation Workflow** (rotate.yml)
    - Runs at 0:05 AM UTC every Monday
@@ -58,6 +62,11 @@ The system uses two separate GitHub Actions workflow files:
 2. **Notification Workflow** (notify.yml)
    - Runs at 2:00 AM UTC on weekdays (Monday to Friday)
    - Sends a notification to the current person in the queue
+
+3. **Test Workflow** (test.yml)
+   - Runs on push to main branch
+   - Runs on pull requests targeting main branch
+   - Ensures code quality by running the test suite
 
 ## Development
 
